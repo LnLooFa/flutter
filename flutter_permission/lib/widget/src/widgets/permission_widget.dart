@@ -1,15 +1,34 @@
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class IndexPage extends StatefulWidget {
+class PermissionWidget extends StatefulWidget {
+  final Permission permission;
+  final List<String> permissionList;
+  final bool isCloseApp;
+  final String leftBtnText;
+
+  PermissionWidget({@required this.permission,@required this.permissionList,
+    this.isCloseApp=false,this.leftBtnText="再考虑一下"});
+
   @override
-  _IndexPageState createState() => _IndexPageState();
+  _PermissionWidgetState createState() => _PermissionWidgetState();
 }
 
-class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver{
+class _PermissionWidgetState extends State<PermissionWidget> with WidgetsBindingObserver{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        color: Colors.transparent,
+      ),
+    );
+  }
+
   bool _isToSetting=false;
   @override
   void initState() {
@@ -34,28 +53,23 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver{
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("权限申请"),
-      ),
-    );
-  }
-
   void checkPermission({PermissionStatus status}) async {
-    Permission permission=Permission.storage;
+    Permission permission=widget.permission;
     if(status == null){
       status = await permission.status;
     }
     if(status.isUndetermined){ //第一次申请
-      showPermissionAlert(_list[0],"同意",permission);
+      showPermissionAlert(widget.permissionList[0],"同意",permission);
     }else if(status.isDenied){ //第一次申请被拒绝
-      showPermissionAlert(_list[1],"重试",permission);
+      if(Platform.isIOS){
+        showPermissionAlert(widget.permissionList[2],"去设置中心",permission);
+        return;
+      }
+      showPermissionAlert(widget.permissionList[1],"重试",permission);
     }else if(status.isPermanentlyDenied){ // 第二次申请被拒绝
-      showPermissionAlert(_list[2],"去设置中心",permission);
+      showPermissionAlert(widget.permissionList[2],"去设置中心",permission,isSetting:true);
     }else{ // 通过
-
+      Navigator.of(context).pop(true);
     }
   }
 
@@ -75,11 +89,10 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver{
           child: Text(message),
         ),
         actions: [
-          CupertinoDialogAction(child: Text("取消"),onPressed: (){
-            closeApp();
+          CupertinoDialogAction(child: Text("${widget.leftBtnText}"),onPressed: (){
+            widget.isCloseApp?closeApp():Navigator.of(context).pop(false);
           },),
           CupertinoDialogAction(child: Text("$rightText"),onPressed: (){
-            Navigator.of(context).pop();
             //是否是
             if(isSetting){
               _isToSetting=true;
@@ -88,6 +101,7 @@ class _IndexPageState extends State<IndexPage> with WidgetsBindingObserver{
             }else{
               requestPermission(permission);
             }
+            Navigator.of(context).pop(true);
           },)
         ],
       );

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ho/widget/page/index_page.dart';
+
+import 'index_page.dart';
 
 class RootApp extends StatefulWidget {
   @override
