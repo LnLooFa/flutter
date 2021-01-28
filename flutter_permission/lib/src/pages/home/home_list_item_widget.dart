@@ -45,7 +45,7 @@ class _HomeListItemWidgetState extends State<HomeListItemWidget> {
       return Container(
         width: MediaQuery.of(context).size.width,
         child: Image.asset(
-          "assets/images/app_logo.png",
+          "assets/images/cover.png",
           fit: BoxFit.fitWidth,
         ),
       );
