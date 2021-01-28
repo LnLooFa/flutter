@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ho/src/pages/home/home_item_page.dart';
+import 'package:flutter_ho/src/pages/mine/main_mine_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
             HomeItemPage(0),
             HomeItemPage(1),
             HomeItemPage(2),
-            HomeItemPage(4),
+            MainMinePage(),
           ],
         ),
       ),

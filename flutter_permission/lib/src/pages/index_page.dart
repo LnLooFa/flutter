@@ -12,6 +12,8 @@ import 'package:flutter_ho/src/widgets/protocol_model.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 
+import 'guild/first_guild_page.dart';
+
 class IndexPage extends StatefulWidget {
   @override
   _IndexPageState createState() => _IndexPageState();
@@ -83,7 +85,7 @@ class _IndexPageState extends State<IndexPage> with ProtocolModel {
     if (isAgreement) {
       LogUtil.e("同意协议");
       SPUtil.save("isAgreement", true);
-      toWelcome();
+      toNextPage();
     } else {
       LogUtil.e("不同意协议");
       closeApp();
@@ -94,11 +96,20 @@ class _IndexPageState extends State<IndexPage> with ProtocolModel {
     SystemChannels.platform.invokeMethod("SystemNavigator.pop");
   }
 
-  void toWelcome() {
-    NavigatorUtil.pushPageByFade(
-      context: context,
-      targPage: WelComePage(),
-      isReplace: true,
-    );
+  void toNextPage() async{
+    bool isFirstPage=await SPUtil.getBool("is_first_page");
+    if(isFirstPage==null || !isFirstPage){
+      NavigatorUtil.pushPageByFade(
+        context: context,
+        targPage: FirstGuildPage(),
+        isReplace: true,
+      );
+    }else{
+      NavigatorUtil.pushPageByFade(
+        context: context,
+        targPage: WelComePage(),
+        isReplace: true,
+      );
+    }
   }
 }

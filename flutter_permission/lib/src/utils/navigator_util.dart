@@ -48,6 +48,7 @@ class NavigatorUtil {
       {@required BuildContext context,
       @required Widget targPage,
       bool isReplace = false,
+      int startMills=400,
       bool opaque = false,
       Function(dynamic value) dismissCallBack}) {
     PageRoute pageRoute = PageRouteBuilder(
@@ -56,6 +57,7 @@ class NavigatorUtil {
             Animation<double> secondaryAnimation) {
           return targPage;
         },
+        transitionDuration: Duration(milliseconds: startMills),
         transitionsBuilder: (BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation, Widget child) {
           return FadeTransition(
