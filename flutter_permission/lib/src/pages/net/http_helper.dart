@@ -8,4 +8,6 @@ class HttpHelper{
   static const String appVersion = BASE_HOST + "app/version";
   //获取文章列表
   static const String artList = BASE_HOST + "article/list";
+  //获取信息列表
+  static const String msgList = BASE_HOST + "msg/list";
 }
