@@ -60,34 +60,34 @@ Skia Graphics Library（SGL）是一个由C++编写的开放源代码图形库�
 - WindowManager - app 进程内是唯一的，用来和 WindowManagerService 通信，记录管理 app 内所有的 Window
 - Window - 系统层面抽象的界面单元，每一个 Activiyt 对应一个 Window
 
-
+https://github.com/LnLooFa/flutter/blob/main/assets%5Cwidget%5Cmaterial.png
 ## MaterialApp主题  
 1.设置App-ThemeData的样式
-![Material ThemeData的设置](assets\material.png)  
+![Material ThemeData的设置](https://github.com/LnLooFa/flutter/blob/main/assets/material.png)  
 
 2.设置AppBarTheme的样式
-![ThemeData AppBarTheme的设置](assets\appbar_theme.png) 
+![ThemeData AppBarTheme的设置](https://github.com/LnLooFa/flutter/blob/main/assets/appbar_theme.png) 
 
 3.设置IconThemeData的样式
-![ThemeData IconThemeData的设置](assets\icontheme.png) 
+![ThemeData IconThemeData的设置](https://github.com/LnLooFa/flutter/blob/main/assets/icontheme.png) 
 
 4.设置ButtonThemeData的样式
-![ThemeData ButtonThemeData的设置](assets\buttontheme.png) 
+![ThemeData ButtonThemeData的设置](https://github.com/LnLooFa/flutter/blob/main/assets/buttontheme.png) 
 
 5.设置Scaffold 悬浮按钮FloatinActionButton的样式
-![Scaffold FloatinActionButton的设置](assets\floating_action_button.png) 
+![Scaffold FloatinActionButton的设置](https://github.com/LnLooFa/flutter/blob/main/assets/floating_action_button.png) 
 
 6.设置Scaffold 悬浮按钮位置FloatinActionButtonLocation属性
-![Scaffold FloatinActionButtonLocation的设置](assets\floating_action.png) 
+![Scaffold FloatinActionButtonLocation的设置](https://github.com/LnLooFa/flutter/blob/main/assets/floating_action.png) 
 
 Container 有子Widget时,没有设置高度时会包裹子Widget的高度
 
 7.设置Scaffold 悬浮按钮位置TabBar属性
-![Scaffold TabBar的设置](assets\tabbar1.png)![Scaffold TabBar的设置](assets\tabbar2.png)
+![Scaffold TabBar的设置](https://github.com/LnLooFa/flutter/blob/main/assets/tabbar1.png)![Scaffold TabBar的设置](https://github.com/LnLooFa/flutter/blob/main/assets/tabbar2.png)
 
 
 8.设置Text 属性
-![Text的设置](assets\text1.png)![Text的设置](assets\text2.png) 
+![Text的设置](https://github.com/LnLooFa/flutter/blob/main/assets/text1.png)![Text的设置](https://github.com/LnLooFa/flutter/blob/main/assets/text2.png) 
 
 9.设置Text TextStyle属性
-![Text  TextStyle的设置](assets\textstyle1.png)![Text  TextStyle的设置](assets\textstyle2.png)
+![Text  TextStyle的设置](https://github.com/LnLooFa/flutter/blob/main/assets/textstyle1.png)![Text  TextStyle的设置](https://github.com/LnLooFa/flutter/blob/main/assets/textstyle2.png)
